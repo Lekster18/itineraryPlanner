@@ -1,11 +1,13 @@
 import React from "react";
 import CivicDistrict from "./components/CivicDistrict";
 import Login from "./pages/Login";
+import Search from "./pages/Search";
 
 function App() {
   return (
     <div>
-      <Login></Login>
+      <Search></Search>
+      {/* <Login></Login> */}
       {/* <CivicDistrict /> */}
     </div>
   );
