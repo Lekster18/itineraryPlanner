@@ -10,6 +10,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
+=======
+    "dotenv": "^16.4.5",
+>>>>>>> 88769d695e7405e42b54b64fb5e4052c42052cd0
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
