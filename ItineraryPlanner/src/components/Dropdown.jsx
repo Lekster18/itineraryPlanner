@@ -2,12 +2,17 @@ import { useState } from "react";
 
 const Dropdown = ({ option }) => {
   const [isActive, setIsActive] = useState(false);
+  const [selected, setSelected] = useState(null);
+
   return (
     <div>
-      <div onClick={(e) => setIsActive(!isActive)}>Click to choose</div>
-      {isActive && (
-        <div onClick={(e) => setSelected(e.target.textContent)}>{option}</div>
-      )}
+      <div onClick={() => setIsActive(!isActive)}>Click to choose</div>
+      {isActive &&
+        option.map((ele) => (
+          <div key={ele} onClick={() => setSelected(ele)}>
+            {ele}
+          </div>
+        ))}
     </div>
   );
 };

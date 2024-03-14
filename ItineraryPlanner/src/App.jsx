@@ -7,8 +7,8 @@ import Dropdown from "./components/Dropdown";
 function App() {
   return (
     <div>
-      <Dropdown></Dropdown>
-      {/* <Search></Search> */}
+      {/* <Dropdown></Dropdown> */}
+      <Search></Search>
       {/* <Login></Login> */}
       {/* <CivicDistrict /> */}
     </div>
