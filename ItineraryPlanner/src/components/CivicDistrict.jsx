@@ -105,13 +105,20 @@ const CivicDistrict = () => {
       console.log("an error has occurred");
     }
   };
-
+  getAccoms();
+  getAttractions();
+  getFnb();
+  getMalls();
   return (
     <div>
       <h1>Test</h1>
       <ul>
         {malls.map((item) => {
-          return <li key={item.id}>{item.name}</li>;
+          return (
+            <>
+              <li key={item.id}>{item.name}</li>
+            </>
+          );
         })}
         ,
         {accoms.map((item) => {
