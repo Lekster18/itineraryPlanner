@@ -9,7 +9,7 @@ const NavBar = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/FavoritesList"
+              to="/favourites"
             >
               Favourites List
             </NavLink>
@@ -17,7 +17,7 @@ const NavBar = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
-              to="/Plan"
+              to="/plan"
             >
               Itinerary Plan
             </NavLink>
