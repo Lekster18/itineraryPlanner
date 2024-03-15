@@ -4,15 +4,17 @@ import Login from "./pages/Login";
 import Search from "./pages/Search";
 import Dropdown from "./components/Dropdown";
 import FavouriteList from "./pages/FavouriteList";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NavBar from "./components/NavBar";
 
 function App() {
   return (
     <div>
-      {/* <Dropdown></Dropdown> */}
+      {/* <Dropdown></Dropdown>
       <FavouriteList />
-      {/* <Search></Search> */}
-      {/* <Login></Login> */}
-      {/* <CivicDistrict /> */}
+      <Search></Search>
+      <CivicDistrict /> */}
+      <NavBar></NavBar>
     </div>
   );
 }
