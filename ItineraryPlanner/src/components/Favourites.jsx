@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 
-const FavouriteList = () => {
+const Favourites = () => {
   useEffect(() => {
-    const getData = async () => {
+    const setData = async () => {
       try {
         const res = await fetch(
           "https://api.airtable.com/v0/appK0n8UQ1jxmNCyv/Table%201",
@@ -47,4 +47,4 @@ const FavouriteList = () => {
   );
 };
 
-export default FavouriteList;
+export default Favourites;
