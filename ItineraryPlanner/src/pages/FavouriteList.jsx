@@ -19,6 +19,7 @@ const FavouriteList = () => {
         if (res.ok) {
           const data = await res.json();
           setItems(data.records);
+          return data.records.fields.name;
         } else {
           console.error("Error fetching data:", res.statusText);
         }

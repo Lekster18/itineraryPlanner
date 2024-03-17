@@ -97,47 +97,57 @@ const District = (props) => {
 
   return (
     <div>
-      <h1>Test</h1>
-      <h2>Malls:</h2>
-      <ul>
-        {malls.map((item) => (
-          <>
-            <li key={item.id}>
-              {item.name} {item.uuid}
-            </li>
-            <button onClick={() => addToFavourites(item.name, item.uuid)}>
-              Add to favourites
-            </button>
-          </>
-        ))}
-      </ul>
-      <h2>Accommodations:</h2>
-      <ul>
-        {accoms.map((item) => (
-          <>
-            <li key={item.id}>{item.name}</li>
-            <button>Add to favourites</button>
-          </>
-        ))}
-      </ul>
-      <h2>Food & Beverages:</h2>
-      <ul>
-        {fnb.map((item) => (
-          <>
-            <li key={item.id}>{item.name}</li>
-            <button>Add to favourites</button>
-          </>
-        ))}
-      </ul>
-      <h2>Attractions:</h2>
-      <ul>
-        {attractions.map((item) => (
-          <>
-            <li key={item.id}>{item.name}</li>
-            <button>Add to favourites</button>
-          </>
-        ))}
-      </ul>
+      {props.selected && (
+        <>
+          <h1>Search Results:</h1>
+          <h2>Malls:</h2>
+          <ul>
+            {malls.map((item) => (
+              <>
+                <li key={item.id}>
+                  {item.name} {item.uuid}
+                </li>
+                <button onClick={() => addToFavourites(item.name, item.uuid)}>
+                  Add to favourites
+                </button>
+              </>
+            ))}
+          </ul>
+          <h2>Accommodations:</h2>
+          <ul>
+            {accoms.map((item) => (
+              <>
+                <li key={item.id}>{item.name}</li>
+                <button onClick={() => addToFavourites(item.name, item.uuid)}>
+                  Add to favourites
+                </button>
+              </>
+            ))}
+          </ul>
+          <h2>Food & Beverages:</h2>
+          <ul>
+            {fnb.map((item) => (
+              <>
+                <li key={item.id}>{item.name}</li>
+                <button onClick={() => addToFavourites(item.name, item.uuid)}>
+                  Add to favourites
+                </button>
+              </>
+            ))}
+          </ul>
+          <h2>Attractions:</h2>
+          <ul>
+            {attractions.map((item) => (
+              <>
+                <li key={item.id}>{item.name}</li>
+                <button onClick={() => addToFavourites(item.name, item.uuid)}>
+                  Add to favourites
+                </button>
+              </>
+            ))}
+          </ul>
+        </>
+      )}
     </div>
   );
 };

@@ -1,19 +1,19 @@
 import React from "react";
-import CivicDistrict from "./components/CivicDistrict";
+import District from "./components/District";
 import Login from "./pages/Login";
 import Search from "./pages/Search";
 import Dropdown from "./components/Dropdown";
-import FavouriteList from "./pages/FavouriteList";
+import FavouriteList from "./pages/FavouriteList.jsx";
 import { Navigate, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Plan from "./pages/Plan";
 function App() {
   return (
     <div>
-      {/* <Dropdown></Dropdown>
-      <FavouriteList />
-      <Search></Search>
-      <CivicDistrict /> */}
+      {/* <Dropdown></Dropdown> */}
+      {/* <FavouriteList /> */}
+      {/* <Search></Search> */}
+      {/* <District /> */}
       <NavBar></NavBar>
       <Routes>
         <Route path="/" element={<Navigate replace to="/Login" />} />

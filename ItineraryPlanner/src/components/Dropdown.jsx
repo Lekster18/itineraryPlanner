@@ -1,6 +1,7 @@
 import { useState } from "react";
+import District from "./District";
 
-const Dropdown = ({ option }) => {
+const Dropdown = ({ options }) => {
   const [isActive, setIsActive] = useState(false);
   const [selected, setSelected] = useState(null);
 
@@ -8,11 +9,12 @@ const Dropdown = ({ option }) => {
     <div>
       <div onClick={() => setIsActive(!isActive)}>Click to choose</div>
       {isActive &&
-        option.map((ele) => (
+        options.map((ele) => (
           <div key={ele} onClick={() => setSelected(ele)}>
             {ele}
           </div>
         ))}
+      <District selected={selected}></District>
     </div>
   );
 };
