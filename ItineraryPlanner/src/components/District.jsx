@@ -7,6 +7,40 @@ const District = (props) => {
   const [attractions, setAttractions] = useState([]);
   const district = props.selected;
 
+  const addToFavourites = async (itemName, itemUUID) => {
+    try {
+      const res = await fetch(
+        "https://api.airtable.com/v0/appK0n8UQ1jxmNCyv/Table%201",
+        {
+          method: "POST",
+          headers: {
+            Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            records: [
+              {
+                fields: {
+                  uuid: itemUUID,
+                  name: itemName,
+                },
+              },
+            ],
+          }),
+        }
+      );
+      if (res.ok) {
+        const data = await res.json();
+        console.log("Item added to favourites:", itemName);
+      } else {
+        console.error("Error fetching");
+        console.log(res);
+      }
+    } catch (error) {
+      console.error("An error occurred:", error);
+    }
+  };
+
   useEffect(() => {
     const fetchData = async (searchValue, endpoint) => {
       const searchType = "keyword";
@@ -67,25 +101,41 @@ const District = (props) => {
       <h2>Malls:</h2>
       <ul>
         {malls.map((item) => (
-          <li key={item.id}>{item.name}</li>
+          <>
+            <li key={item.id}>
+              {item.name} {item.uuid}
+            </li>
+            <button onClick={() => addToFavourites(item.name, item.uuid)}>
+              Add to favourites
+            </button>
+          </>
         ))}
       </ul>
       <h2>Accommodations:</h2>
       <ul>
         {accoms.map((item) => (
-          <li key={item.id}>{item.name}</li>
+          <>
+            <li key={item.id}>{item.name}</li>
+            <button>Add to favourites</button>
+          </>
         ))}
       </ul>
       <h2>Food & Beverages:</h2>
       <ul>
         {fnb.map((item) => (
-          <li key={item.id}>{item.name}</li>
+          <>
+            <li key={item.id}>{item.name}</li>
+            <button>Add to favourites</button>
+          </>
         ))}
       </ul>
       <h2>Attractions:</h2>
       <ul>
         {attractions.map((item) => (
-          <li key={item.id}>{item.name}</li>
+          <>
+            <li key={item.id}>{item.name}</li>
+            <button>Add to favourites</button>
+          </>
         ))}
       </ul>
     </div>
