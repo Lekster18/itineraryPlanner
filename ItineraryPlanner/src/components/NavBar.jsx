@@ -9,6 +9,14 @@ const NavBar = () => {
           <li>
             <NavLink
               className={(navData) => (navData.isActive ? styles.active : "")}
+              to="/search"
+            >
+              Search
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              className={(navData) => (navData.isActive ? styles.active : "")}
               to="/favourites"
             >
               Favourites List
