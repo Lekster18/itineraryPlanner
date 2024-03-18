@@ -9,6 +9,7 @@ const District = (props) => {
   const district = props.selected;
 
   const addToFavourites = async (itemName, itemUUID) => {
+    //POST favourite record to Airtable
     try {
       const res = await fetch(
         "https://api.airtable.com/v0/appK0n8UQ1jxmNCyv/Table%201",
@@ -43,6 +44,7 @@ const District = (props) => {
   };
 
   useEffect(() => {
+    //GET records from 4 different TIH APIs
     const fetchData = async (searchValue, endpoint) => {
       const searchType = "keyword";
       const url = new URL(endpoint);
@@ -60,12 +62,9 @@ const District = (props) => {
           throw new Error("Network response was not ok");
         }
         const data = await res.json();
-        console.log(data.data);
-
         return data.data;
       } catch (error) {
         console.error("Error fetching data:", error);
-        return [];
       }
     };
 
@@ -99,9 +98,9 @@ const District = (props) => {
   }, [district]);
 
   return (
-    <div>
+    <div className={styles}>
       {district && (
-        <>
+        <div>
           <h1>Search Results:</h1>
           <h2>Malls:</h2>
           <ul>
@@ -147,7 +146,7 @@ const District = (props) => {
               </li>
             ))}
           </ul>
-        </>
+        </div>
       )}
     </div>
   );

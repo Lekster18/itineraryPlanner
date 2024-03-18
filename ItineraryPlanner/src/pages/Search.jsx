@@ -12,6 +12,7 @@ const Search = () => {
     "Tanjong Pagar",
   ];
   const [selected, setSelected] = useState(null);
+
   return (
     <div className={styles.container}>
       <br />

@@ -1,9 +1,7 @@
 import React, { useState } from "react";
-import District from "./components/District";
 import Search from "./pages/Search";
-import Dropdown from "./components/Dropdown";
 import FavouriteList from "./pages/FavouriteList.jsx";
-import { Navigate, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import Plan from "./pages/Plan";
 

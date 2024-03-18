@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./Dropdown.module.css";
 
 const Dropdown = (props) => {
+  //Reusable component
   const [isActive, setIsActive] = useState(false);
   const option = props.options;
   const selected = props.selected;
@@ -16,7 +17,6 @@ const Dropdown = (props) => {
         {!isActive && !selected ? "Click to choose" : selected}
       </div>
       <div className={styles["dropdown-content"]}>
-        {/* style={{ background: "antiquewhite" }} */}
         {isActive &&
           option.map((ele, i) => (
             <div

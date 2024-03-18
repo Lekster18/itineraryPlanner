@@ -10,6 +10,7 @@ const Plan = (props) => {
   const [selected, setSelected] = useState({});
 
   useEffect(() => {
+    //GET the record from Airtable
     const fetchData = async () => {
       try {
         const res = await fetch(
@@ -37,6 +38,7 @@ const Plan = (props) => {
     fetchData();
   }, []);
 
+  //Function to create array of dates between given start and end date
   const generateDaysArray = () => {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -52,6 +54,7 @@ const Plan = (props) => {
     setDays(daysArray);
   };
 
+  //Form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     generateDaysArray();

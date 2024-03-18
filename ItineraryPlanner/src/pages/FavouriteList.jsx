@@ -7,6 +7,7 @@ const FavouriteList = (props) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        //GET the record from Airtable
         const res = await fetch(
           "https://api.airtable.com/v0/appK0n8UQ1jxmNCyv/Table%201",
           {
@@ -21,7 +22,7 @@ const FavouriteList = (props) => {
           const data = await res.json();
           setItems(data.records);
         } else {
-          console.error("Error fetching data:", res.statusText);
+          console.error("Error fetching data:", error);
         }
       } catch (error) {
         console.error("An error occurred:", error);
@@ -33,7 +34,7 @@ const FavouriteList = (props) => {
 
   const handleDelete = async (recordId) => {
     try {
-      // Delete the record from Airtable
+      // DELETE the record from Airtable
       const res = await fetch(
         `https://api.airtable.com/v0/appK0n8UQ1jxmNCyv/Table%201/${recordId}`,
         {
@@ -48,7 +49,7 @@ const FavouriteList = (props) => {
         throw new Error("Failed to delete record");
       }
 
-      // Remove the record from the local state
+      // Remove the record from display
       setItems(items.filter((item) => item.id !== recordId));
     } catch (error) {
       console.error("An error occurred while deleting the record:", error);
