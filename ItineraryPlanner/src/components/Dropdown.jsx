@@ -1,24 +1,35 @@
 import { useState } from "react";
+import styles from "./Dropdown.module.css";
 
 const Dropdown = (props) => {
   const [isActive, setIsActive] = useState(false);
   const option = props.options;
+  const selected = props.selected;
+
   return (
-    <div>
-      <div onClick={() => setIsActive(!isActive)}>Click to choose</div>
-      {isActive &&
-        option.map((ele) => (
-          <div
-            key={ele}
-            onClick={() => {
-              {
+    <div className={styles.dropdown}>
+      <div
+        onClick={(e) => {
+          setIsActive(!isActive);
+        }}
+      >
+        {!isActive && !selected ? "Click to choose" : selected}
+      </div>
+      <div className={styles["dropdown-content"]}>
+        {/* style={{ background: "antiquewhite" }} */}
+        {isActive &&
+          option.map((ele, i) => (
+            <div
+              key={`${ele}-${i}`}
+              onClick={() => {
                 props.setSelected(ele);
-              }
-            }}
-          >
-            {ele}
-          </div>
-        ))}
+                setIsActive(false);
+              }}
+            >
+              {ele}
+            </div>
+          ))}
+      </div>
     </div>
   );
 };

@@ -1,0 +1,30 @@
+.dropdown {
+  position: relative;
+}
+
+.dropdown > div {
+  cursor: pointer;
+  padding: 0px 0px;
+  border: 0x solid black;
+  border-radius: 8px;
+}
+
+.dropdown-content {
+  display: contents;
+  position: relative;
+  justify-content: center;
+  background-color: antiquewhite;
+  border: 1px solid black;
+  border-top: none;
+  border-radius: 0 0 4px 4px;
+  width: 50%;
+  z-index: 1;
+}
+
+.dropdown-content div {
+  padding: 8px 12px;
+}
+
+.dropdown-content div:hover {
+  background-color: salmon;
+}

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./FavouriteList.module.css";
 
 const FavouriteList = (props) => {
   const [items, setItems] = useState([]);
@@ -55,7 +56,8 @@ const FavouriteList = (props) => {
   };
 
   return (
-    <div>
+    <div className={styles.container}>
+      <br />
       <h1>Favourite List</h1>
       <ul>
         {items.map((item, index) => (

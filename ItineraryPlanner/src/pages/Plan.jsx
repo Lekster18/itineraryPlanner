@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import Dropdown from "../components/Dropdown";
+import styles from "./Plan.module.css";
 
 const Plan = (props) => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [days, setDays] = useState([]);
   const [items, setItems] = useState([]);
-  // const setSelectedArray = [];
-  // const selectedArray = [];
-
-  let [selected, setSelected] = useState({});
+  const [selected, setSelected] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
@@ -50,9 +48,6 @@ const Plan = (props) => {
       const currentDate = new Date(start);
       currentDate.setDate(start.getDate() + i);
       daysArray.push(currentDate.toDateString());
-
-      // setSelectedArray.append(setSelected);
-      // selectedArray.append(selected);
     }
     setDays(daysArray);
   };
@@ -63,10 +58,11 @@ const Plan = (props) => {
   };
 
   return (
-    <div>
-      <h2>Plan Your Trip</h2>
+    <div className={styles.container}>
+      <br />
+      <h1>Plan Your Trip</h1>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="startDate">Start Date:</label>
+        <label>Start Date:</label>
         <input
           type="date"
           id="startDate"
@@ -74,7 +70,7 @@ const Plan = (props) => {
           onChange={(e) => setStartDate(e.target.value)}
           required
         />
-        <label htmlFor="endDate">End Date:</label>
+        <label>End Date:</label>
         <input
           type="date"
           id="endDate"
@@ -105,7 +101,6 @@ const Plan = (props) => {
                     }}
                   />
                 </td>
-                <br />
               </tr>
             ))}
           </tbody>

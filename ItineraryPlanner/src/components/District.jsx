@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import styles from "./District.module.css";
 
 const District = (props) => {
   const [malls, setMalls] = useState([]);
@@ -59,6 +60,8 @@ const District = (props) => {
           throw new Error("Network response was not ok");
         }
         const data = await res.json();
+        console.log(data.data);
+
         return data.data;
       } catch (error) {
         console.error("Error fetching data:", error);
@@ -97,53 +100,51 @@ const District = (props) => {
 
   return (
     <div>
-      {props.selected && (
+      {district && (
         <>
           <h1>Search Results:</h1>
           <h2>Malls:</h2>
           <ul>
             {malls.map((item) => (
-              <>
-                <li key={item.id}>
-                  {item.name} {item.uuid}
-                </li>
+              <li key={item.id}>
+                <span>{item.name}</span>
                 <button onClick={() => addToFavourites(item.name, item.uuid)}>
                   Add to favourites
                 </button>
-              </>
+              </li>
             ))}
           </ul>
           <h2>Accommodations:</h2>
           <ul>
             {accoms.map((item) => (
-              <>
-                <li key={item.id}>{item.name}</li>
+              <li key={item.id}>
+                <span>{item.name}</span>
                 <button onClick={() => addToFavourites(item.name, item.uuid)}>
                   Add to favourites
                 </button>
-              </>
+              </li>
             ))}
           </ul>
           <h2>Food & Beverages:</h2>
           <ul>
             {fnb.map((item) => (
-              <>
-                <li key={item.id}>{item.name}</li>
+              <li key={item.id}>
+                <span>{item.name}</span>
                 <button onClick={() => addToFavourites(item.name, item.uuid)}>
                   Add to favourites
                 </button>
-              </>
+              </li>
             ))}
           </ul>
           <h2>Attractions:</h2>
           <ul>
             {attractions.map((item) => (
-              <>
-                <li key={item.id}>{item.name}</li>
+              <li key={item.id}>
+                <span>{item.name}</span>
                 <button onClick={() => addToFavourites(item.name, item.uuid)}>
                   Add to favourites
                 </button>
-              </>
+              </li>
             ))}
           </ul>
         </>
