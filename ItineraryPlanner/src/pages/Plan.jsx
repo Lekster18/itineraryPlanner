@@ -1,13 +1,44 @@
 import { useState, useEffect } from "react";
 import Dropdown from "../components/Dropdown";
 
-const Plan = () => {
+const Plan = (props) => {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [days, setDays] = useState([]);
-  const [selectedActivities, setSelectedActivities] = useState([]);
+  const [items, setItems] = useState([]);
+  // const setSelectedArray = [];
+  // const selectedArray = [];
 
-  // Function to generate an array of days between start date and end date
+  let [selected, setSelected] = useState({});
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          "https://api.airtable.com/v0/appK0n8UQ1jxmNCyv/Table%201",
+          {
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${import.meta.env.VITE_AIRTABLE_API_KEY}`,
+            },
+          }
+        );
+
+        if (res.ok) {
+          const data = await res.json();
+
+          setItems(data.records.map((item) => item.fields.name));
+        } else {
+          console.error("Error fetching data:", error);
+        }
+      } catch (error) {
+        console.error("An error occurred:", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const generateDaysArray = () => {
     const start = new Date(startDate);
     const end = new Date(endDate);
@@ -19,17 +50,13 @@ const Plan = () => {
       const currentDate = new Date(start);
       currentDate.setDate(start.getDate() + i);
       daysArray.push(currentDate.toDateString());
+
+      // setSelectedArray.append(setSelected);
+      // selectedArray.append(selected);
     }
     setDays(daysArray);
   };
 
-  const handleActivitySelect = (activity, index) => {
-    const updatedActivities = [...selectedActivities];
-    updatedActivities[index] = activity;
-    setSelectedActivities(updatedActivities);
-  };
-
-  // Function to handle form submission
   const handleSubmit = (e) => {
     e.preventDefault();
     generateDaysArray();
@@ -70,17 +97,15 @@ const Plan = () => {
               <tr key={index}>
                 <td>{day}</td>
                 <td>
-                  {/* <select>
-                    <option value="">Select an activity</option>
-                    <option value="activity1">{item.field.name}</option>
-                    <option value="activity2">Activity 2</option>
-                    <option value="activity3">Activity 3</option>
-                  </select> */}
                   <Dropdown
-                    options={selectedActivities}
-                    onSelect={handleActivitySelect}
+                    options={items}
+                    selected={selected[index]}
+                    setSelected={(val) => {
+                      setSelected({ ...selected, [index]: val });
+                    }}
                   />
                 </td>
+                <br />
               </tr>
             ))}
           </tbody>
